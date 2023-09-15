@@ -1,6 +1,18 @@
 //here is the multifiler JavaScript file
 function MakeMultiFilter(originalArray){
+  
+  function arrayFilterer(filterCriteria, callback){
     var currentArray = originalArray;
+
+    for(var i = 0; i < originalArray.length(); i++){
+
+      if(originalArray[i].arrayFilterer == true){
+        currentArray.add(originalArray[i]);
+      }
+    }
+    return currentArray
+  }
+
 }
 
 
