@@ -1,19 +1,31 @@
 //here is the multifiler JavaScript file
-function MakeMultiFilter(originalArray){
-  
-  function arrayFilterer(filterCriteria, callback){
-    var currentArray = originalArray;
+function MakeMultiFilter(originalArray) {
+  let currentArray = [...originalArray]; // copy original array
 
-    for(var i = 0; i < originalArray.length(); i++){
-
-      if(originalArray[i].arrayFilterer == true){
-        currentArray.add(originalArray[i]);
-      }
+  function arrayFilterer(filterCriteria, callback) {
+    // Check if filterCriteria is a function
+    if (typeof filterCriteria === 'function') {
+      // Filter currentArray using filterCriteria
+      currentArray = currentArray.filter(filterCriteria);
     }
-    return currentArray
+    // Check if callback is a function and call it with the value of originalArray
+    if (typeof callback === 'function') {
+      callback.call(originalArray, currentArray);
+    }
+
+    // Return arrayFilterer to allow chaining or return currentArray if filterCriteria is not a function
+    if (typeof filterCriteria === 'function') {
+      return arrayFilterer;
+    } 
+    else {
+      return currentArray;
+    }
   }
 
+  return arrayFilterer;
 }
+
+
 
 
 //Test Code
