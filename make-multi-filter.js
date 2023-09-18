@@ -13,7 +13,7 @@ function MakeMultiFilter(originalArray) {
       callback.call(originalArray, currentArray);
     }
 
-    // Return arrayFilterer to allow chaining or return currentArray if filterCriteria is not a function
+    // Return arrayFilterer or return currentArray if filterCriteria is not a function
     if (typeof filterCriteria === 'function') {
       return arrayFilterer;
     } 
